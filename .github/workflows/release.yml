@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  attach-managed-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Zip Managed files
+        run: |
+          cd Managed
+          zip -r ../Managed.zip .
+          cd ..
+
+      - name: Upload Managed files to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Managed.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
