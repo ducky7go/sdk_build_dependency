@@ -25,7 +25,7 @@ It requires a local, untracked `.env` at the repo root that defines `MANAGED_SOU
 
 ## Conventions
 
-- Version bumps are commits whose message is just the version number (the only commit in this shallow clone is `1.3.13`; this is one data point, so confirm what the number tracks before relying on it).
+- Version bumps are commits whose message is just the version number (e.g. `1.3.14`; confirm what the number tracks before relying on it).
 - Releases are cut as GitHub Releases; the workflow then attaches `Managed.zip`. The consumers' fetch script uses the latest release's source zipball, so the latest release tag must contain a committed, up-to-date `Managed/`.
 - Update flow (derived from the script and workflow): run `scripts/sync_managed.sh` against the new game install, review `git status`, commit, then publish a GitHub Release so the workflow attaches `Managed.zip`.
 
